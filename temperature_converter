@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Temperature Converter</h1>
+        <div class="input-container">
+            <label for="celsius">Celsius:</label>
+            <input type="number" id="celsius">
+        </div>
+        <div class="input-container">
+            <label for="fahrenheit">Fahrenheit:</label>
+            <input type="number" id="fahrenheit">
+        </div>
+        <div class="buttons">
+            <button id="toFahrenheit">Convert to Fahrenheit</button>
+            <button id="toCelsius">Convert to Celsius</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    font-size: 24px;
+}
+
+.input-container {
+    margin: 10px 0;
+}
+
+label {
+    display: inline-block;
+    width: 70px;
+    text-align: right;
+}
+
+input {
+    width: 100px;
+}
+
+.buttons button {
+    margin: 10px;
+}
+const celsiusInput = document.getElementById('celsius');
+const fahrenheitInput = document.getElementById('fahrenheit');
+const toFahrenheitButton = document.getElementById('toFahrenheit');
+const toCelsiusButton = document.getElementById('toCelsius');
+
+// Convert Celsius to Fahrenheit
+toFahrenheitButton.addEventListener('click', () => {
+    const celsiusValue = parseFloat(celsiusInput.value);
+    if (!isNaN(celsiusValue)) {
+        const fahrenheitValue = (celsiusValue * 9/5) + 32;
+        fahrenheitInput.value = fahrenheitValue.toFixed(2);
+    } else {
+        alert('Please enter a valid number for Celsius.');
+    }
+});
+
+// Convert Fahrenheit to Celsius
+toCelsiusButton.addEventListener('click', () => {
+    const fahrenheitValue = parseFloat(fahrenheitInput.value);
+    if (!isNaN(fahrenheitValue)) {
+        const celsiusValue = (fahrenheitValue - 32) * 5/9;
+        celsiusInput.value = celsiusValue.toFixed(2);
+    } else {
+        alert('Please enter a valid number for Fahrenheit.');
+    }
+});
